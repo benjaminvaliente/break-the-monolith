@@ -6,10 +6,6 @@ from flask import Flask, request, Response
 
 app = Flask(__name__)
 
-@app.route("/hello")
-def hello():
-    return "Hello! I am the container: {}\n".format(socket.gethostname())
-
 @app.route("/user")
 def user():
     return "Hello User! You are in the container: {}\n".format(socket.gethostname())
