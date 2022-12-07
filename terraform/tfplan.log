@@ -1,0 +1,626 @@
+[0m[1mdata.template_file.hello: Reading...[0m[0m
+[0m[1mdata.template_file.user: Reading...[0m[0m
+[0m[1mdata.template_file.user: Read complete after 0s [id=fc1457c89c6cc0ad8fdaed5afba38cf0a1589aa7b709ddbaea46190c6e79c5ac][0m
+[0m[1mdata.template_file.hello: Read complete after 0s [id=8019b837ea986d8ec28e6336929bf8956ff301a88f10f3f45c84e2a85bf5dbca][0m
+[0m[1mdata.aws_iam_policy_document.ecs_task_execution_role: Reading...[0m[0m
+[0m[1mdata.aws_availability_zones.available: Reading...[0m[0m
+[0m[1mdata.aws_iam_policy_document.ecs_task_execution_role: Read complete after 0s [id=320642683][0m
+[0m[1mdata.aws_availability_zones.available: Read complete after 0s [id=us-east-1][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create
+[0m
+Terraform will perform the following actions:
+
+[1m  # aws_alb.main[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_alb" "main" {
+      [32m+[0m [0m[1m[0marn[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0marn_suffix[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mdesync_mitigation_mode[0m[0m     = "defensive"
+      [32m+[0m [0m[1m[0mdns_name[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mdrop_invalid_header_fields[0m[0m = false
+      [32m+[0m [0m[1m[0menable_deletion_protection[0m[0m = false
+      [32m+[0m [0m[1m[0menable_http2[0m[0m               = true
+      [32m+[0m [0m[1m[0menable_waf_fail_open[0m[0m       = false
+      [32m+[0m [0m[1m[0mid[0m[0m                         = (known after apply)
+      [32m+[0m [0m[1m[0midle_timeout[0m[0m               = 60
+      [32m+[0m [0m[1m[0minternal[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mip_address_type[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mload_balancer_type[0m[0m         = "application"
+      [32m+[0m [0m[1m[0mname[0m[0m                       = "load-balancer"
+      [32m+[0m [0m[1m[0mpreserve_host_header[0m[0m       = false
+      [32m+[0m [0m[1m[0msecurity_groups[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0msubnets[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mzone_id[0m[0m                    = (known after apply)
+
+      [32m+[0m [0msubnet_mapping {
+          [32m+[0m [0m[1m[0mallocation_id[0m[0m        = (known after apply)
+          [32m+[0m [0m[1m[0mipv6_address[0m[0m         = (known after apply)
+          [32m+[0m [0m[1m[0moutpost_id[0m[0m           = (known after apply)
+          [32m+[0m [0m[1m[0mprivate_ipv4_address[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0msubnet_id[0m[0m            = (known after apply)
+        }
+    }
+
+[1m  # aws_alb_listener.hello[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_alb_listener" "hello" {
+      [32m+[0m [0m[1m[0marn[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mload_balancer_arn[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mport[0m[0m              = 5050
+      [32m+[0m [0m[1m[0mprotocol[0m[0m          = "HTTP"
+      [32m+[0m [0m[1m[0mssl_policy[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m          = (known after apply)
+
+      [32m+[0m [0mdefault_action {
+          [32m+[0m [0m[1m[0morder[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0mtarget_group_arn[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mtype[0m[0m             = "forward"
+        }
+    }
+
+[1m  # aws_alb_listener.user[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_alb_listener" "user" {
+      [32m+[0m [0m[1m[0marn[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mload_balancer_arn[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mport[0m[0m              = 5050
+      [32m+[0m [0m[1m[0mprotocol[0m[0m          = "HTTP"
+      [32m+[0m [0m[1m[0mssl_policy[0m[0m        = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m          = (known after apply)
+
+      [32m+[0m [0mdefault_action {
+          [32m+[0m [0m[1m[0morder[0m[0m            = (known after apply)
+          [32m+[0m [0m[1m[0mtarget_group_arn[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mtype[0m[0m             = "forward"
+        }
+    }
+
+[1m  # aws_alb_target_group.hello[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_alb_target_group" "hello" {
+      [32m+[0m [0m[1m[0marn[0m[0m                                = (known after apply)
+      [32m+[0m [0m[1m[0marn_suffix[0m[0m                         = (known after apply)
+      [32m+[0m [0m[1m[0mconnection_termination[0m[0m             = false
+      [32m+[0m [0m[1m[0mderegistration_delay[0m[0m               = "300"
+      [32m+[0m [0m[1m[0mid[0m[0m                                 = (known after apply)
+      [32m+[0m [0m[1m[0mip_address_type[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mlambda_multi_value_headers_enabled[0m[0m = false
+      [32m+[0m [0m[1m[0mload_balancing_algorithm_type[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                               = "target-group-hello"
+      [32m+[0m [0m[1m[0mport[0m[0m                               = 5050
+      [32m+[0m [0m[1m[0mpreserve_client_ip[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mprotocol[0m[0m                           = "HTTP"
+      [32m+[0m [0m[1m[0mprotocol_version[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mproxy_protocol_v2[0m[0m                  = false
+      [32m+[0m [0m[1m[0mslow_start[0m[0m                         = 0
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mtarget_type[0m[0m                        = "ip"
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                             = (known after apply)
+
+      [32m+[0m [0mhealth_check {
+          [32m+[0m [0m[1m[0menabled[0m[0m             = true
+          [32m+[0m [0m[1m[0mhealthy_threshold[0m[0m   = 3
+          [32m+[0m [0m[1m[0minterval[0m[0m            = 30
+          [32m+[0m [0m[1m[0mmatcher[0m[0m             = "200"
+          [32m+[0m [0m[1m[0mpath[0m[0m                = "/hello"
+          [32m+[0m [0m[1m[0mport[0m[0m                = "traffic-port"
+          [32m+[0m [0m[1m[0mprotocol[0m[0m            = "HTTP"
+          [32m+[0m [0m[1m[0mtimeout[0m[0m             = 3
+          [32m+[0m [0m[1m[0munhealthy_threshold[0m[0m = 2
+        }
+
+      [32m+[0m [0mstickiness {
+          [32m+[0m [0m[1m[0mcookie_duration[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mcookie_name[0m[0m     = (known after apply)
+          [32m+[0m [0m[1m[0menabled[0m[0m         = (known after apply)
+          [32m+[0m [0m[1m[0mtype[0m[0m            = (known after apply)
+        }
+
+      [32m+[0m [0mtarget_failover {
+          [32m+[0m [0m[1m[0mon_deregistration[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mon_unhealthy[0m[0m      = (known after apply)
+        }
+    }
+
+[1m  # aws_alb_target_group.user[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_alb_target_group" "user" {
+      [32m+[0m [0m[1m[0marn[0m[0m                                = (known after apply)
+      [32m+[0m [0m[1m[0marn_suffix[0m[0m                         = (known after apply)
+      [32m+[0m [0m[1m[0mconnection_termination[0m[0m             = false
+      [32m+[0m [0m[1m[0mderegistration_delay[0m[0m               = "300"
+      [32m+[0m [0m[1m[0mid[0m[0m                                 = (known after apply)
+      [32m+[0m [0m[1m[0mip_address_type[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mlambda_multi_value_headers_enabled[0m[0m = false
+      [32m+[0m [0m[1m[0mload_balancing_algorithm_type[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                               = "target-group-user"
+      [32m+[0m [0m[1m[0mport[0m[0m                               = 5050
+      [32m+[0m [0m[1m[0mpreserve_client_ip[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mprotocol[0m[0m                           = "HTTP"
+      [32m+[0m [0m[1m[0mprotocol_version[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mproxy_protocol_v2[0m[0m                  = false
+      [32m+[0m [0m[1m[0mslow_start[0m[0m                         = 0
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mtarget_type[0m[0m                        = "ip"
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                             = (known after apply)
+
+      [32m+[0m [0mhealth_check {
+          [32m+[0m [0m[1m[0menabled[0m[0m             = true
+          [32m+[0m [0m[1m[0mhealthy_threshold[0m[0m   = 3
+          [32m+[0m [0m[1m[0minterval[0m[0m            = 30
+          [32m+[0m [0m[1m[0mmatcher[0m[0m             = "200"
+          [32m+[0m [0m[1m[0mpath[0m[0m                = "/user"
+          [32m+[0m [0m[1m[0mport[0m[0m                = "traffic-port"
+          [32m+[0m [0m[1m[0mprotocol[0m[0m            = "HTTP"
+          [32m+[0m [0m[1m[0mtimeout[0m[0m             = 3
+          [32m+[0m [0m[1m[0munhealthy_threshold[0m[0m = 2
+        }
+
+      [32m+[0m [0mstickiness {
+          [32m+[0m [0m[1m[0mcookie_duration[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mcookie_name[0m[0m     = (known after apply)
+          [32m+[0m [0m[1m[0menabled[0m[0m         = (known after apply)
+          [32m+[0m [0m[1m[0mtype[0m[0m            = (known after apply)
+        }
+
+      [32m+[0m [0mtarget_failover {
+          [32m+[0m [0m[1m[0mon_deregistration[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mon_unhealthy[0m[0m      = (known after apply)
+        }
+    }
+
+[1m  # aws_cloudwatch_log_group.far_log_group[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_cloudwatch_log_group" "far_log_group" {
+      [32m+[0m [0m[1m[0marn[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m              = "/ecs/fargate-app"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mretention_in_days[0m[0m = 1
+      [32m+[0m [0m[1m[0mskip_destroy[0m[0m      = false
+      [32m+[0m [0m[1m[0mtags[0m[0m              = {
+          [32m+[0m [0m"Name" = "fargate-log-group"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m          = {
+          [32m+[0m [0m"Name" = "fargate-log-group"
+        }
+    }
+
+[1m  # aws_cloudwatch_log_stream.far_log_stream[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_cloudwatch_log_stream" "far_log_stream" {
+      [32m+[0m [0m[1m[0marn[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mlog_group_name[0m[0m = "/ecs/fargate-app"
+      [32m+[0m [0m[1m[0mname[0m[0m           = "fargate-log-stream"
+    }
+
+[1m  # aws_ecs_cluster.main[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ecs_cluster" "main" {
+      [32m+[0m [0m[1m[0marn[0m[0m                = (known after apply)
+      [32m+[0m [0m[1m[0mcapacity_providers[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m               = "fargate-cluster"
+      [32m+[0m [0m[1m[0mtags_all[0m[0m           = (known after apply)
+
+      [32m+[0m [0mdefault_capacity_provider_strategy {
+          [32m+[0m [0m[1m[0mbase[0m[0m              = (known after apply)
+          [32m+[0m [0m[1m[0mcapacity_provider[0m[0m = (known after apply)
+          [32m+[0m [0m[1m[0mweight[0m[0m            = (known after apply)
+        }
+
+      [32m+[0m [0msetting {
+          [32m+[0m [0m[1m[0mname[0m[0m  = (known after apply)
+          [32m+[0m [0m[1m[0mvalue[0m[0m = (known after apply)
+        }
+    }
+
+[1m  # aws_ecs_service.hello[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ecs_service" "hello" {
+      [32m+[0m [0m[1m[0mcluster[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0mdeployment_maximum_percent[0m[0m         = 200
+      [32m+[0m [0m[1m[0mdeployment_minimum_healthy_percent[0m[0m = 100
+      [32m+[0m [0m[1m[0mdesired_count[0m[0m                      = 1
+      [32m+[0m [0m[1m[0menable_ecs_managed_tags[0m[0m            = false
+      [32m+[0m [0m[1m[0menable_execute_command[0m[0m             = false
+      [32m+[0m [0m[1m[0miam_role[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                                 = (known after apply)
+      [32m+[0m [0m[1m[0mlaunch_type[0m[0m                        = "FARGATE"
+      [32m+[0m [0m[1m[0mname[0m[0m                               = "hello-service"
+      [32m+[0m [0m[1m[0mplatform_version[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mscheduling_strategy[0m[0m                = "REPLICA"
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mtask_definition[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mwait_for_steady_state[0m[0m              = false
+
+      [32m+[0m [0mload_balancer {
+          [32m+[0m [0m[1m[0mcontainer_name[0m[0m   = "lb-app"
+          [32m+[0m [0m[1m[0mcontainer_port[0m[0m   = 5050
+          [32m+[0m [0m[1m[0mtarget_group_arn[0m[0m = (known after apply)
+        }
+
+      [32m+[0m [0mnetwork_configuration {
+          [32m+[0m [0m[1m[0massign_public_ip[0m[0m = true
+          [32m+[0m [0m[1m[0msecurity_groups[0m[0m  = (known after apply)
+          [32m+[0m [0m[1m[0msubnets[0m[0m          = (known after apply)
+        }
+    }
+
+[1m  # aws_ecs_service.user[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ecs_service" "user" {
+      [32m+[0m [0m[1m[0mcluster[0m[0m                            = (known after apply)
+      [32m+[0m [0m[1m[0mdeployment_maximum_percent[0m[0m         = 200
+      [32m+[0m [0m[1m[0mdeployment_minimum_healthy_percent[0m[0m = 100
+      [32m+[0m [0m[1m[0mdesired_count[0m[0m                      = 1
+      [32m+[0m [0m[1m[0menable_ecs_managed_tags[0m[0m            = false
+      [32m+[0m [0m[1m[0menable_execute_command[0m[0m             = false
+      [32m+[0m [0m[1m[0miam_role[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                                 = (known after apply)
+      [32m+[0m [0m[1m[0mlaunch_type[0m[0m                        = "FARGATE"
+      [32m+[0m [0m[1m[0mname[0m[0m                               = "user-service"
+      [32m+[0m [0m[1m[0mplatform_version[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mscheduling_strategy[0m[0m                = "REPLICA"
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mtask_definition[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mtriggers[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mwait_for_steady_state[0m[0m              = false
+
+      [32m+[0m [0mload_balancer {
+          [32m+[0m [0m[1m[0mcontainer_name[0m[0m   = "lb-app"
+          [32m+[0m [0m[1m[0mcontainer_port[0m[0m   = 5050
+          [32m+[0m [0m[1m[0mtarget_group_arn[0m[0m = (known after apply)
+        }
+
+      [32m+[0m [0mnetwork_configuration {
+          [32m+[0m [0m[1m[0massign_public_ip[0m[0m = true
+          [32m+[0m [0m[1m[0msecurity_groups[0m[0m  = (known after apply)
+          [32m+[0m [0m[1m[0msubnets[0m[0m          = (known after apply)
+        }
+    }
+
+[1m  # aws_ecs_task_definition.hello[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ecs_task_definition" "hello" {
+      [32m+[0m [0m[1m[0marn[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0mcontainer_definitions[0m[0m    = jsonencode(
+            [
+              [32m+[0m [0m{
+                  [32m+[0m [0menvironment  = []
+                  [32m+[0m [0messential    = true
+                  [32m+[0m [0mimage        = "451535584409.dkr.ecr.eu-west-1.amazonaws.com/hello:latest"
+                  [32m+[0m [0mname         = "hello-app"
+                  [32m+[0m [0mportMappings = [
+                      [32m+[0m [0m{
+                          [32m+[0m [0mcontainerPort = 5050
+                          [32m+[0m [0mhostPort      = 5050
+                          [32m+[0m [0mprotocol      = "tcp"
+                        },
+                    ]
+                },
+            ]
+        )
+      [32m+[0m [0m[1m[0mcpu[0m[0m                      = "0.5"
+      [32m+[0m [0m[1m[0mexecution_role_arn[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mfamily[0m[0m                   = "hello-task"
+      [32m+[0m [0m[1m[0mid[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mmemory[0m[0m                   = "512"
+      [32m+[0m [0m[1m[0mnetwork_mode[0m[0m             = "awsvpc"
+      [32m+[0m [0m[1m[0mrequires_compatibilities[0m[0m = [
+          [32m+[0m [0m"FARGATE",
+        ]
+      [32m+[0m [0m[1m[0mrevision[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mskip_destroy[0m[0m             = false
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                 = (known after apply)
+    }
+
+[1m  # aws_ecs_task_definition.user[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ecs_task_definition" "user" {
+      [32m+[0m [0m[1m[0marn[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0mcontainer_definitions[0m[0m    = jsonencode(
+            [
+              [32m+[0m [0m{
+                  [32m+[0m [0menvironment  = []
+                  [32m+[0m [0messential    = true
+                  [32m+[0m [0mimage        = "451535584409.dkr.ecr.eu-west-1.amazonaws.com/user:latest"
+                  [32m+[0m [0mname         = "user-app"
+                  [32m+[0m [0mportMappings = [
+                      [32m+[0m [0m{
+                          [32m+[0m [0mcontainerPort = 5050
+                          [32m+[0m [0mhostPort      = 5050
+                          [32m+[0m [0mprotocol      = "tcp"
+                        },
+                    ]
+                },
+            ]
+        )
+      [32m+[0m [0m[1m[0mcpu[0m[0m                      = "0.5"
+      [32m+[0m [0m[1m[0mexecution_role_arn[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mfamily[0m[0m                   = "user-task"
+      [32m+[0m [0m[1m[0mid[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mmemory[0m[0m                   = "512"
+      [32m+[0m [0m[1m[0mnetwork_mode[0m[0m             = "awsvpc"
+      [32m+[0m [0m[1m[0mrequires_compatibilities[0m[0m = [
+          [32m+[0m [0m"FARGATE",
+        ]
+      [32m+[0m [0m[1m[0mrevision[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mskip_destroy[0m[0m             = false
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                 = (known after apply)
+    }
+
+[1m  # aws_iam_role.ecs_task_execution_role[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_iam_role" "ecs_task_execution_role" {
+      [32m+[0m [0m[1m[0marn[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0massume_role_policy[0m[0m    = jsonencode(
+            {
+              [32m+[0m [0mStatement = [
+                  [32m+[0m [0m{
+                      [32m+[0m [0mAction    = "sts:AssumeRole"
+                      [32m+[0m [0mEffect    = "Allow"
+                      [32m+[0m [0mPrincipal = {
+                          [32m+[0m [0mService = "ecs-tasks.amazonaws.com"
+                        }
+                      [32m+[0m [0mSid       = ""
+                    },
+                ]
+              [32m+[0m [0mVersion   = "2012-10-17"
+            }
+        )
+      [32m+[0m [0m[1m[0mcreate_date[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mforce_detach_policies[0m[0m = false
+      [32m+[0m [0m[1m[0mid[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mmanaged_policy_arns[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mmax_session_duration[0m[0m  = 3600
+      [32m+[0m [0m[1m[0mname[0m[0m                  = "bv-ecs-task-execution-role"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mpath[0m[0m                  = "/"
+      [32m+[0m [0m[1m[0mtags_all[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0munique_id[0m[0m             = (known after apply)
+
+      [32m+[0m [0minline_policy {
+          [32m+[0m [0m[1m[0mname[0m[0m   = (known after apply)
+          [32m+[0m [0m[1m[0mpolicy[0m[0m = (known after apply)
+        }
+    }
+
+[1m  # aws_iam_role_policy_attachment.ecs_task_execution_role[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_iam_role_policy_attachment" "ecs_task_execution_role" {
+      [32m+[0m [0m[1m[0mid[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mpolicy_arn[0m[0m = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+      [32m+[0m [0m[1m[0mrole[0m[0m       = "bv-ecs-task-execution-role"
+    }
+
+[1m  # aws_internet_gateway.gw[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_internet_gateway" "gw" {
+      [32m+[0m [0m[1m[0marn[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m   = (known after apply)
+    }
+
+[1m  # aws_route.internet_access[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route" "internet_access" {
+      [32m+[0m [0m[1m[0mdestination_cidr_block[0m[0m = "0.0.0.0/0"
+      [32m+[0m [0m[1m[0mgateway_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0minstance_id[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0minstance_owner_id[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mnetwork_interface_id[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0morigin[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mroute_table_id[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mstate[0m[0m                  = (known after apply)
+    }
+
+[1m  # aws_route_table.private[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route_table" "private" {
+      [32m+[0m [0m[1m[0marn[0m[0m              = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mpropagating_vgws[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mroute[0m[0m            = [
+          [32m+[0m [0m{
+              [32m+[0m [0mcarrier_gateway_id         = ""
+              [32m+[0m [0mcidr_block                 = "0.0.0.0/0"
+              [32m+[0m [0mcore_network_arn           = ""
+              [32m+[0m [0mdestination_prefix_list_id = ""
+              [32m+[0m [0megress_only_gateway_id     = ""
+              [32m+[0m [0mgateway_id                 = (known after apply)
+              [32m+[0m [0minstance_id                = ""
+              [32m+[0m [0mipv6_cidr_block            = ""
+              [32m+[0m [0mlocal_gateway_id           = ""
+              [32m+[0m [0mnat_gateway_id             = ""
+              [32m+[0m [0mnetwork_interface_id       = ""
+              [32m+[0m [0mtransit_gateway_id         = ""
+              [32m+[0m [0mvpc_endpoint_id            = ""
+              [32m+[0m [0mvpc_peering_connection_id  = ""
+            },
+        ]
+      [32m+[0m [0m[1m[0mtags_all[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = (known after apply)
+    }
+
+[1m  # aws_route_table_association.private[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route_table_association" "private" {
+      [32m+[0m [0m[1m[0mid[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mroute_table_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0msubnet_id[0m[0m      = (known after apply)
+    }
+
+[1m  # aws_security_group.ecs_tasks[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_security_group" "ecs_tasks" {
+      [32m+[0m [0m[1m[0marn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m            = "allow inbound access from the ALB only"
+      [32m+[0m [0m[1m[0megress[0m[0m                 = [
+          [32m+[0m [0m{
+              [32m+[0m [0mcidr_blocks      = [
+                  [32m+[0m [0m"0.0.0.0/0",
+                ]
+              [32m+[0m [0mdescription      = ""
+              [32m+[0m [0mfrom_port        = 0
+              [32m+[0m [0mipv6_cidr_blocks = []
+              [32m+[0m [0mprefix_list_ids  = []
+              [32m+[0m [0mprotocol         = "-1"
+              [32m+[0m [0msecurity_groups  = []
+              [32m+[0m [0mself             = false
+              [32m+[0m [0mto_port          = 0
+            },
+        ]
+      [32m+[0m [0m[1m[0mid[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mingress[0m[0m                = [
+          [32m+[0m [0m{
+              [32m+[0m [0mcidr_blocks      = []
+              [32m+[0m [0mdescription      = ""
+              [32m+[0m [0mfrom_port        = 5050
+              [32m+[0m [0mipv6_cidr_blocks = []
+              [32m+[0m [0mprefix_list_ids  = []
+              [32m+[0m [0mprotocol         = "tcp"
+              [32m+[0m [0msecurity_groups  = (known after apply)
+              [32m+[0m [0mself             = false
+              [32m+[0m [0mto_port          = 5050
+            },
+        ]
+      [32m+[0m [0m[1m[0mname[0m[0m                   = "ecs-tasks-security-group"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mrevoke_rules_on_delete[0m[0m = false
+      [32m+[0m [0m[1m[0mtags_all[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                 = (known after apply)
+    }
+
+[1m  # aws_security_group.lb[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_security_group" "lb" {
+      [32m+[0m [0m[1m[0marn[0m[0m                    = (known after apply)
+      [32m+[0m [0m[1m[0mdescription[0m[0m            = "controls access to the ALB"
+      [32m+[0m [0m[1m[0megress[0m[0m                 = [
+          [32m+[0m [0m{
+              [32m+[0m [0mcidr_blocks      = [
+                  [32m+[0m [0m"0.0.0.0/0",
+                ]
+              [32m+[0m [0mdescription      = ""
+              [32m+[0m [0mfrom_port        = 0
+              [32m+[0m [0mipv6_cidr_blocks = []
+              [32m+[0m [0mprefix_list_ids  = []
+              [32m+[0m [0mprotocol         = "-1"
+              [32m+[0m [0msecurity_groups  = []
+              [32m+[0m [0mself             = false
+              [32m+[0m [0mto_port          = 0
+            },
+        ]
+      [32m+[0m [0m[1m[0mid[0m[0m                     = (known after apply)
+      [32m+[0m [0m[1m[0mingress[0m[0m                = [
+          [32m+[0m [0m{
+              [32m+[0m [0mcidr_blocks      = [
+                  [32m+[0m [0m"0.0.0.0/0",
+                ]
+              [32m+[0m [0mdescription      = ""
+              [32m+[0m [0mfrom_port        = 5050
+              [32m+[0m [0mipv6_cidr_blocks = []
+              [32m+[0m [0mprefix_list_ids  = []
+              [32m+[0m [0mprotocol         = "tcp"
+              [32m+[0m [0msecurity_groups  = []
+              [32m+[0m [0mself             = false
+              [32m+[0m [0mto_port          = 5050
+            },
+        ]
+      [32m+[0m [0m[1m[0mname[0m[0m                   = "cb-load-balancer-security-group"
+      [32m+[0m [0m[1m[0mname_prefix[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mrevoke_rules_on_delete[0m[0m = false
+      [32m+[0m [0m[1m[0mtags_all[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                 = (known after apply)
+    }
+
+[1m  # aws_subnet.private[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_subnet" "private" {
+      [32m+[0m [0m[1m[0marn[0m[0m                                            = (known after apply)
+      [32m+[0m [0m[1m[0massign_ipv6_address_on_creation[0m[0m                = false
+      [32m+[0m [0m[1m[0mavailability_zone[0m[0m                              = "us-east-1a"
+      [32m+[0m [0m[1m[0mavailability_zone_id[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mcidr_block[0m[0m                                     = "172.16.0.0/24"
+      [32m+[0m [0m[1m[0menable_dns64[0m[0m                                   = false
+      [32m+[0m [0m[1m[0menable_resource_name_dns_a_record_on_launch[0m[0m    = false
+      [32m+[0m [0m[1m[0menable_resource_name_dns_aaaa_record_on_launch[0m[0m = false
+      [32m+[0m [0m[1m[0mid[0m[0m                                             = (known after apply)
+      [32m+[0m [0m[1m[0mipv6_cidr_block_association_id[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mipv6_native[0m[0m                                    = false
+      [32m+[0m [0m[1m[0mmap_public_ip_on_launch[0m[0m                        = false
+      [32m+[0m [0m[1m[0mowner_id[0m[0m                                       = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_dns_hostname_type_on_launch[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                                       = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                                         = (known after apply)
+    }
+
+[1m  # aws_subnet.public[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_subnet" "public" {
+      [32m+[0m [0m[1m[0marn[0m[0m                                            = (known after apply)
+      [32m+[0m [0m[1m[0massign_ipv6_address_on_creation[0m[0m                = false
+      [32m+[0m [0m[1m[0mavailability_zone[0m[0m                              = "us-east-1a"
+      [32m+[0m [0m[1m[0mavailability_zone_id[0m[0m                           = (known after apply)
+      [32m+[0m [0m[1m[0mcidr_block[0m[0m                                     = "172.16.1.0/24"
+      [32m+[0m [0m[1m[0menable_dns64[0m[0m                                   = false
+      [32m+[0m [0m[1m[0menable_resource_name_dns_a_record_on_launch[0m[0m    = false
+      [32m+[0m [0m[1m[0menable_resource_name_dns_aaaa_record_on_launch[0m[0m = false
+      [32m+[0m [0m[1m[0mid[0m[0m                                             = (known after apply)
+      [32m+[0m [0m[1m[0mipv6_cidr_block_association_id[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mipv6_native[0m[0m                                    = false
+      [32m+[0m [0m[1m[0mmap_public_ip_on_launch[0m[0m                        = true
+      [32m+[0m [0m[1m[0mowner_id[0m[0m                                       = (known after apply)
+      [32m+[0m [0m[1m[0mprivate_dns_hostname_type_on_launch[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                                       = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m                                         = (known after apply)
+    }
+
+[1m  # aws_vpc.main[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_vpc" "main" {
+      [32m+[0m [0m[1m[0marn[0m[0m                                  = (known after apply)
+      [32m+[0m [0m[1m[0mcidr_block[0m[0m                           = "172.16.0.0/16"
+      [32m+[0m [0m[1m[0mdefault_network_acl_id[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mdefault_route_table_id[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mdefault_security_group_id[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mdhcp_options_id[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0menable_classiclink[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0menable_classiclink_dns_support[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0menable_dns_hostnames[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0menable_dns_support[0m[0m                   = true
+      [32m+[0m [0m[1m[0menable_network_address_usage_metrics[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                                   = (known after apply)
+      [32m+[0m [0m[1m[0minstance_tenancy[0m[0m                     = "default"
+      [32m+[0m [0m[1m[0mipv6_association_id[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mipv6_cidr_block[0m[0m                      = (known after apply)
+      [32m+[0m [0m[1m[0mipv6_cidr_block_network_border_group[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mmain_route_table_id[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mowner_id[0m[0m                             = (known after apply)
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                             = (known after apply)
+    }
+
+[0m[1mPlan:[0m 23 to add, 0 to change, 0 to destroy.
+[0m[0m
+[1mChanges to Outputs:[0m[0m
+  [32m+[0m [0m[1m[0malb_hostname[0m[0m = (known after apply)
+[33m╷[0m[0m
+[33m│[0m [0m[1m[33mWarning: [0m[0m[1mArgument is deprecated[0m
+[33m│[0m [0m
+[33m│[0m [0m[0m  with provider["registry.terraform.io/hashicorp/aws"],
+[33m│[0m [0m  on provider.tf line 6, in provider "aws":
+[33m│[0m [0m   6:   shared_credentials_file = [4m"/home/benjaminvaliente/.aws/credentials"[0m[0m
+[33m│[0m [0m
+[33m│[0m [0mUse shared_credentials_files instead.
+[33m│[0m [0m
+[33m│[0m [0m(and one more similar warning elsewhere)
+[33m╵[0m[0m
+[33m╷[0m[0m
+[33m│[0m [0m[1m[33mWarning: [0m[0m[1mAttribute Deprecated[0m
+[33m│[0m [0m
+[33m│[0m [0m[0m  with provider["registry.terraform.io/hashicorp/aws"],
+[33m│[0m [0m  on provider.tf line 6, in provider "aws":
+[33m│[0m [0m   6:   shared_credentials_file = [4m"/home/benjaminvaliente/.aws/credentials"[0m[0m
+[33m│[0m [0m
+[33m│[0m [0mUse shared_credentials_files instead.
+[33m│[0m [0m
+[33m│[0m [0m(and one more similar warning elsewhere)
+[33m╵[0m[0m
+[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.

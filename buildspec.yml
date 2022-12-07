@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+    on-failure: ABORT
+    commands:
+      - 
+  build:
+    on-failure: ABORT
+    commands:
+      - echo "Starting build and push process..."
+      - ./docker.sh
+      - echo "Docker images were pushed successfully."
