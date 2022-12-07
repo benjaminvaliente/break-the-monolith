@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.10
+    on-failure: ABORT
+    commands:
+      - 
+  build:
+    on-failure: ABORT
+    commands:
+      - echo "Starting deployment process..."
+      - aws ecs update-service --cluster fargate-cluster --service hello-service --force-new-deployment --region us-east-1
+      - aws ecs update-service --cluster fargate-cluster --service user-service --force-new-deployment --region us-east-1
+      - echo "Deployment completed successfully"
