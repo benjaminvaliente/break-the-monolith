@@ -11,4 +11,4 @@ def hello():
     return "Hello! From hello-app. I am the container: {}\n".format(socket.gethostname())
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',port=5050)
+    app.run(host='0.0.0.0',port=80)

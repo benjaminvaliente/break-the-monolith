@@ -6,6 +6,6 @@ COPY . ./
 
 RUN pip install -r requirements.txt --quiet
 
-EXPOSE 5050
+EXPOSE 80
 
 CMD [ "python3", "./hello.py" ]
