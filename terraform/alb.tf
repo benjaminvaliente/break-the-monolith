@@ -12,11 +12,12 @@ resource "aws_alb_listener" "app" {
   port              = var.app_port
   protocol          = "HTTP"
 
-/*    default_action {
+  default_action {
     target_group_arn = aws_alb_target_group.hello.id
     type             = "forward"
-   }    */
+  }
 }
+
 
 resource "aws_alb_target_group" "hello" {
   name        = "target-group-hello"
@@ -36,17 +37,35 @@ resource "aws_alb_target_group" "hello" {
   }
 }
 
-#resource "null_resource" "ip_hello" {
-#  provisioner "local-exec" {
-#    command     = "chmod +x ./ip.sh; ./ip.sh ${aws_ecs_cluster.main.name} ${aws_ecs_service.hello.name}"
-#    interpreter = ["bash", "-c"]
-#  }
-#}
+resource "aws_alb_listener_rule" "hello" {
+  listener_arn = "${aws_alb_listener.app.arn}"
+  priority     = 200
 
-/* resource "aws_alb_target_group_attachment" "hello" {
+  action {
+    type             = "forward"
+    target_group_arn = "${aws_alb_target_group.hello.arn}"
+  }
+
+  condition {
+    path_pattern {
+    values = ["/hello/*"]
+    }
+  }
+  depends_on = [aws_ecs_service.hello]
+}
+
+/*
+resource "null_resource" "ip_hello" {
+  provisioner "local-exec" {
+    command     = "export AWS_PROFILE='default'; chmod +x ./ip.sh; ./ip.sh ${aws_ecs_cluster.main.name} ${aws_ecs_service.hello.name}"
+    interpreter = ["bash", "-c"]
+  }
+}
+
+resource "aws_alb_target_group_attachment" "hello" {
   target_group_arn = aws_alb_target_group.hello.arn
   target_id        = aws_ecs_service.hello.id
-} */
+}
 
 resource "aws_alb_target_group" "user" {
   name        = "target-group-user"
@@ -66,39 +85,21 @@ resource "aws_alb_target_group" "user" {
   }
 }
 
-
-# resource "null_resource" "ip_user" {
-#  provisioner "local-exec" {
-#    command     = "chmod +x ./ip.sh; ./ip.sh ${aws_ecs_cluster.main.name} ${aws_ecs_service.user.name}"
-#    interpreter = ["bash", "-c"]
-#  }
-#}
+resource "null_resource" "ip_user" {
+  provisioner "local-exec" {
+    command     = "export AWS_PROFILE='default'; chmod +x ./ip.sh; ./ip.sh ${aws_ecs_cluster.main.name} ${aws_ecs_service.user.name}"
+    interpreter = ["bash", "-c"]
+  }
+}
 
 resource "aws_alb_target_group_attachment" "hello" {
   target_group_arn = aws_alb_target_group.hello.arn
-  target_id        = aws_ecs_service.hello.arn
+  target_id        = null_resource.ip_user.
 }
 
 resource "aws_alb_target_group_attachment" "user" {
   target_group_arn = aws_alb_target_group.user.arn
-  target_id        = aws_ecs_service.user.arn
-}
-
-resource "aws_alb_listener_rule" "hello" {
-  listener_arn = "${aws_alb_listener.app.arn}"
-  priority     = 200
-
-  action {
-    type             = "forward"
-    target_group_arn = "${aws_alb_target_group.hello.arn}"
-  }
-
-  condition {
-    path_pattern {
-    values = ["/hello/*"]
-    }
-  }
-  depends_on = [aws_ecs_service.hello]
+  target_id        = aws_ecs_service.user.id
 }
 
 resource "aws_alb_listener_rule" "user" {
@@ -116,4 +117,4 @@ resource "aws_alb_listener_rule" "user" {
     }
   }
   depends_on = [aws_ecs_service.user]
-}
+} */

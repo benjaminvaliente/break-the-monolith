@@ -17,7 +17,7 @@ terraform {
       version = "~> 4.0"
     }
 
-/*     null = {
+    /*     null = {
       source = "hashicorp/null"
     }*/
   }

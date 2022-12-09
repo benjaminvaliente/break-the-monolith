@@ -35,12 +35,12 @@ resource "aws_ecs_service" "user" {
     assign_public_ip = true
   }
 
-  load_balancer {
+/*   load_balancer {
     target_group_arn = aws_alb_target_group.user.id
     container_name   = "user-app"
     container_port   = var.app_port
-  }
+  } */
 
-  #depends_on = [aws_iam_role_policy_attachment.ecs_task_execution_role]
-  depends_on = [aws_alb_listener.app, aws_iam_role_policy_attachment.ecs_task_execution_role]
+  depends_on = [aws_iam_role_policy_attachment.ecs_task_execution_role]
+  #depends_on = [aws_alb_listener.app, aws_iam_role_policy_attachment.ecs_task_execution_role]
 }
